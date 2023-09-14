@@ -1,23 +1,45 @@
-import './App.css';
-import logo from './logo.svg';
+import { useState } from 'react';
 
 export default function App() {
+  const [button, setButton] = useState('');
+  const [text, setText] = useState('');
+  const [text2, setText2] = useState('');
+  const [meme, setMeme] = useState('');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div>
+        <h2>Top text:</h2>
+        <h3>{text}</h3>
+        <input
+          onChange={(event) => setText(event.currentTarget.value)}
+          value={text}
+        />
+        <h2>Bottom text:</h2>
+        <h3>{text2}</h3>
+        <input
+          onChange={(event) => setText2(event.currentTarget.value)}
+          value={text2}
+        />
+      </div>
+      <img src="" alt="Meme picture" data-test-id="meme-image"></img>
+
+      <div>
+        <label htmlFor="memeTemplate">Meme template: </label>
+        <input type="text" id="memeTemplate" placeholder="Enter meme name" />
+      </div>
+
+      {meme}
+      <button
+        onClick={() => setMeme('https://api.memegen.link/images')}
+        style={{
+          backgroundColor: 'black',
+          color: 'pink',
+          borderRadius: '12px',
+        }}
+      >
+        Download
+      </button>
     </div>
   );
 }
